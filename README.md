@@ -1,44 +1,27 @@
-## Learning Isomorphic Web Application Development
+# 자바스크립트를 이용한 동형 웹 앱플리케이션 제작
 
-> Example source code accompanying "Learning Isomorphic Web Application Development" book
+[동형 자바스크립트 웹 개발] 도서 참고
 
-![book](https://dl.dropboxusercontent.com/u/16006521/learning-isomorphic-web-application-development.png)
+## 사용 프레임워크/라이브러리
 
-### Table of Contents
+- Express
+- React.js
 
-&nbsp;&nbsp;> **Chapter 01: Getting Started with Isomorphic Web Apps**<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Chapter 1: Getting Started with Isomorphic Web Apps<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Chapter 2: How to Compose Web UIs by Using React<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Chapter 3: Working with CSS Styles and Media Assets<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Chapter 4: Configuring Server-side Rendering<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Chapter 5: Creating an API Backend with GraphQL<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Chapter 6: Fetching Data with Relay<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Chapter 7: Implementing Routing and Navigation<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Chapter 8: Authentication and authorization<br>
-&nbsp;&nbsp;&nbsp;&nbsp; Chapter 9: Testing and Deploying<br>
+## 폴더 구조
 
-### Prerequisites
-
-* Node.js v4.0, NPM v3.0 and newer ([download](https://nodejs.org/en/download/))
-* Text editor or IDE with ES6/ES2015 and JSX support
-* React Developer Tools ([download](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en))
-
-### Getting Started
-
-Before you can launch the app, install project's dependencies by running:
-
-```sh
-$ npm install
-```
-
-To build the project and start a development web server run:
-
-```sh
-$ npm run serve
-```
-
-Then open [http://localhost:3000/](http://localhost:3000/) in your browser to test the app.
-
-### Copyright
-
-© 2015 by Konstantin Tarkus ([@koistya](https://twitter.com/koistya)), Packt Publishing. All rights reserved.
+- build: 컴파일된 결과물 저장
+- components: 리액트 컴포넌트
+- core: core 애플리케이션 코드
+- data: GraphQL 데이터 타입
+- node_modules: 타사 라이브러리 및 유틸리티
+- public: 정적 파일
+- routes: 동형 애플리케이션 경로
+- test: 단위/통합 테스트
+- tools: 빌드 자동화 스크립트 및 유틸리티
+- .babelrc: Babel 설정 파일
+- .editorconfig: 에디터 설정 파일
+- .eslintrc: ESLint 설정 파일
+- .gitignore: SCM(소프트웨어 형상 관리)에서 제외된 파일 관리
+- client.js: 클라이언트 측 시작 스크립트
+- package.json: 프로젝트 메타데이터 관리 파일
+- server.js: 서버 측 시작 스크립트
