@@ -2,3 +2,7 @@
   "presets": ["env", "stage-2", "react"],
   "plugins": ["transform-runtime"]
 }
+// env: 최신 프리셋 사용, 브라우저 기반 필요 폴리필, 트랜스폼 플러그인들을 옵션으로 사용 가능
+// stage-2: 바벨7에서는 deprecated
+// react: jsx를 사용하기 위한 프리셋
+// transform-runtime: 트랜스파일링 과정에서 폴리필이 필요한 부분을 내부의 헬퍼 함수로 치환해줌, babel-polyfill 대신 사용 가능
