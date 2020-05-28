@@ -1,0 +1,30 @@
+{
+  "name": "isomorphic",
+  "version": "1.0.0",
+  "description": "Isomorphic Web App Development with JavaScript",
+  "main": "index.js",
+  "repository": "https://github.com/pathas1126/Isomorphic",
+  "author": "Pathas",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "bluebird": "^3.7.2",
+    "express": "^4.17.1",
+    "moment": "^2.26.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "del": "^5.1.0",
+    "eslint": "^7.1.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-react": "^7.20.0",
+    "extend": "^3.0.2",
+    "gaze": "^1.1.3",
+    "ncp": "^2.0.0",
+    "webpack": "^4.43.0"
+  }
+}
