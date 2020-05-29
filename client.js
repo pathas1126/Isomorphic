@@ -7,10 +7,15 @@
 import 'babel-core/register';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import Router from './core/Router';
 
 function run() {
-  ReactDOM.hydrate(<App />, document.getElementById('app'));
+  const renderMethod = !!module.hot ? ReactDOM.hydrate : ReactDOM.render;
+  // 서버사이드 렌더링은 프로덕션에서만 진행되기 때문에 렌더메서드를 구분해서 사용
+  const component = Router.match({
+    path: window.location.pathname
+  });
+  renderMethod(component, document.getElementById('app'));
 }
 
 const loadedStates = ['complete', 'loaded', 'interactive'];
