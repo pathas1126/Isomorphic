@@ -7,7 +7,7 @@ import del from 'del';
 import webpack from 'webpack';
 import Promise from 'bluebird';
 import run from './run';
-import webpackConfig from './webpack.config';
+import webpackConfig from './webpack.config.js';
 
 async function clean() {
   await del(['build/*', '!build/.git'], { dot: true });

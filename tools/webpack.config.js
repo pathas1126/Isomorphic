@@ -5,12 +5,18 @@
 
 import path from 'path';
 import extend from 'extend';
+import webpack from 'webpack';
 
 const common = {
   stats: {
     colors: true,
     chunks: false
   },
+  plugins: [
+    //new webpack.optimize.OccurenceOrderPlugin(true)
+    new (webpack.optimize.OccurenceOrderPlugin ||
+      webpack.optimize.OccurrenceOrderPlugin)(true)
+  ],
 
   module: {
     rules: [
@@ -18,8 +24,8 @@ const common = {
         test: /\.js$/,
         include: [
           path.join(__dirname, '../api'),
-          path.join(__dirname, '../core'),
           path.join(__dirname, '../components'),
+          path.join(__dirname, '../core'),
           path.join(__dirname, '../data'),
           path.join(__dirname, '../routes'),
           path.join(__dirname, '../client.js'),
@@ -29,7 +35,7 @@ const common = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-        loader: 'url-loader?limit=10000&name=[path][name].[ext]'
+        loader: 'url-loader?limit=10000'
       },
       {
         test: /\.(eot|ttf|wav|mp3)$/,
@@ -45,8 +51,7 @@ const common = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              localIdentName: '[name]_[local]_[hash:base64:3]'
+              modules: { localIdentName: '[name]_[local]_[hash:base64:3]' }
             }
           },
           {
@@ -85,7 +90,6 @@ const server = extend(true, {}, common, {
   },
 
   target: 'node',
-
   node: {
     console: false,
     global: false,
@@ -94,7 +98,6 @@ const server = extend(true, {}, common, {
     __filename: false,
     __dirname: false
   },
-
   externals: /^[a-z][a-z\/\.\-0-9]*$/i
 });
 
@@ -103,5 +106,13 @@ server.module.rules[3].use.splice(0, 1);
 server.module.rules[3].use.unshift({
   loader: 'node-style-loader'
 });
+
+if (server.module.loaders) {
+  server.module.loaders
+    .filter((x) => x.loader.startsWith('style-loader!css-loader'))
+    .forEach((x) => {
+      x.loader = 'css-loader/locals' + x.loader.substr(23);
+    });
+}
 
 export default [client, server];
