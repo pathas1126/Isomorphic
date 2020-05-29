@@ -7,7 +7,6 @@ import path from 'path';
 import extend from 'extend';
 
 const common = {
-
   stats: {
     colors: true,
     chunks: false
@@ -19,8 +18,8 @@ const common = {
         test: /\.js$/,
         include: [
           path.join(__dirname, '../api'),
-          path.join(__dirname, '../components'),
           path.join(__dirname, '../core'),
+          path.join(__dirname, '../components'),
           path.join(__dirname, '../data'),
           path.join(__dirname, '../routes'),
           path.join(__dirname, '../client.js'),
@@ -38,9 +37,7 @@ const common = {
       },
       {
         test: /\.scss$/,
-        include: [
-          path.join(__dirname, '../components')
-        ],
+        include: [path.join(__dirname, '../components')],
         use: [
           {
             loader: 'style-loader'
@@ -66,11 +63,9 @@ const common = {
       }
     ]
   }
-
 };
 
 const client = extend(true, {}, common, {
-
   entry: path.join(__dirname, '../client.js'),
 
   output: {
@@ -78,11 +73,9 @@ const client = extend(true, {}, common, {
     path: path.join(__dirname, '../build/public'),
     filename: 'client.js'
   }
-
 });
 
 const server = extend(true, {}, common, {
-
   entry: path.join(__dirname, '../server.js'),
 
   output: {
@@ -103,7 +96,6 @@ const server = extend(true, {}, common, {
   },
 
   externals: /^[a-z][a-z\/\.\-0-9]*$/i
-
 });
 
 // Remove `style-loader` from the server-side bundle configuration

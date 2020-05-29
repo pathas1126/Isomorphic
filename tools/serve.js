@@ -1,8 +1,3 @@
-/*
- * Learning Isomorphic Web Application Development
- * Copyright © 2016 Konstantin Tarkus, Packt Publishing
- */
-
 import path from 'path';
 import cp from 'child_process';
 import Promise from 'bluebird';
@@ -25,14 +20,16 @@ async function serve() {
       );
 
       server.stdout.on('data', (data) => {
-        process.stdout.write(new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '[$1] '));
+        process.stdout.write(
+          new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '[$1] ')
+        );
         process.stdout.write(data);
         if (data.toString('utf8').includes('Node.js server is listening at')) {
           resolve();
         }
       });
-      server.stderr.on('data', data => process.stderr.write(data));
-      server.once('error', err => reject(err));
+      server.stderr.on('data', (data) => process.stderr.write(data));
+      server.once('error', (err) => reject(err));
       process.on('exit', () => server.kill('SIGTERM'));
       return server;
     }

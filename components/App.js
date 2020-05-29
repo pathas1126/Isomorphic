@@ -1,43 +1,24 @@
-/*
- * Learning Isomorphic Web Application Development
- * Copyright © 2015 Konstantin Tarkus, Packt Publishing
- * All rights reserved.
- */
-
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
-class App extends Component {
+const App = () => {
+  const [time, setTime] = useState(null);
 
-  constructor(props) {
-    super(props);
-    this.state = { time: null };
-  }
+  const tick = () => setTime((prevTime) => new Date());
 
-  componentDidMount() {
-    this.tick();
-    this.interval = setInterval(this.tick.bind(this), 200);
-  }
+  useEffect(() => {
+    tick();
+    const interval = setInterval(tick, 200);
+    return () => clearInterval(interval);
+  }, []);
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  tick() {
-    this.setState({ time: new Date() });
-  }
-
-  render() {
-    const time = this.state.time;
-    const timeString = time && moment(time).format('h:mm:ss a');
-    return (
-      <div>
-        <h1>Sample Application</h1>
-        <p>Current date and time is {timeString}</p>
-      </div>
-    );
-  }
-
-}
+  const timeString = time && moment(time).format('h:mm:ss a');
+  return (
+    <div>
+      <h1>Sample Application!!!</h1>
+      <p>Current time is {timeString}</p>
+    </div>
+  );
+};
 
 export default App;
